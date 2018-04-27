@@ -282,7 +282,7 @@ void demo_compare(char *cfg1, char *weight1, char *cfg2, char *weight2, float th
             display_in_thread(0);
         }else{
             char name[256];
-            sprintf(name, "%s_%08d", prefix, count);
+            sprintf(name, "%s_%08d", prefix, fps);
             save_image(buff[(buff_index + 1)%3], name);
         }
         pthread_join(fetch_thread, 0);

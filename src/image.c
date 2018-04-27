@@ -264,7 +264,7 @@ void draw_detections(image im, int num, float thresh, box *boxes, float **probs,
                }
              */
 
-            //printf("%d %s: %.0f%%\n", i, names[class], prob*100);
+            // printf("%d %s: %.0f%%\n", i, names[class], prob*100);
             int offset = class*123457 % classes;
             float red = get_color(2,offset,classes);
             float green = get_color(1,offset,classes);
@@ -290,6 +290,7 @@ void draw_detections(image im, int num, float thresh, box *boxes, float **probs,
 
             draw_box_width(im, left, top, right, bot, width, red, green, blue);
             if (alphabet) {
+
                 image label = get_label(alphabet, labelstr, (im.h*.03)/10);
                 draw_label(im, top + width, left, label, rgb);
                 free_image(label);
@@ -538,6 +539,27 @@ void show_image_cv(image p, const char *name, IplImage *disp)
         cvReleaseImage(&buffer);
     }
     cvShowImage(buff, disp);
+
+		{
+			CvSize size;
+			{
+				size.width = disp->width, size.height = disp->height;
+			}
+
+			static CvVideoWriter* output_video = NULL;    // cv::VideoWriter output_video;
+			if (output_video == NULL)
+			{
+				printf("\n SRC output_video = %p \n", output_video);
+				const char* output_name = "test_dnn_out.avi";
+				//output_video = cvCreateVideoWriter(output_name, CV_FOURCC('H', '2', '6', '4'), 25, size, 1);
+				//output_video = cvCreateVideoWriter(output_name, CV_FOURCC('D', 'I', 'V', 'X'), 25, size, 1);
+				output_video = cvCreateVideoWriter(output_name, CV_FOURCC('M', 'J', 'P', 'G'), 30, size, 1);
+				printf("\n cvCreateVideoWriter, DST output_video = %p  \n", output_video);
+			}
+
+			cvWriteFrame(output_video, disp);
+			printf("\ncvWriteFrame \n");
+		}
 }
 #endif
 
