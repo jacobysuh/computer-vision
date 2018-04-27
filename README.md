@@ -1,6 +1,6 @@
 # Computer Vision with YOLO on a MacBook Pro
-After seeing [deepython.com's "A Computer Vision System's Walk Through Times Square"] on Youtube (which has sadly been removed since), I wanted to learn how to have a real-time computer vision system on my MacBook Pro as well.
-[deepython.com's implementation](http://www.fictiontofact.com/files/media/45900/deepython.com_.jpg)
+After seeing [deepython.com's](http://www.deepython.com) "A Computer Vision System's Walk Through Times Square" on Youtube (which has sadly since been removed), I wanted to learn how to have a real-time computer vision system on my MacBook Pro as well.
+![deepython.com's implementation](http://www.fictiontofact.com/files/media/45900/deepython.com_.jpg)
 
 I found [YOLO](https://pjreddie.com/darknet/yolo/), a real-time object-detection system created by Joseph Redmon. I made a few modifications, but here is the complete installation process from beginning to end since I couldn't find anything similar online.
 
@@ -95,7 +95,7 @@ And then switch back to the old version of CLT again before proceeding.
 Using Terminal, make sure to go to the directory that you wish to put your project, since we're going to be cloning this Github respository.
 ```
 cd /Projects
-git clone 
+git clone https://github.com/jacobysuh/computer-vision.git
 ```
 Then open up Makefile with your favorite text editor and change the following so that the program compiles using OpenCV and CUDA:
 ```
@@ -104,7 +104,7 @@ OPENCV=1
 ```
 For whatever reason, compiling with CUDNN=1 doesn't allow object detection on prerecorded videos, but does seem to work on real-time webcam videos. I can't figure out why this is the case at the moment. Next, follow up with:
 ```
-cd darknet
+cd computer-vision
 make
 wget https://pjreddie.com/media/files/yolov3.weights
 ```
