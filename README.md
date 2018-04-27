@@ -9,6 +9,7 @@ I found [YOLO](https://pjreddie.com/darknet/yolo/), a real-time object-detection
 2. Added start.sh bash file to start program easier
 2. Added percentages to labels
 3. Changed label font to Courier New Bold
+4. Fixed makefile lib64 alias
 
 
 ## References Used
@@ -106,7 +107,7 @@ For whatever reason, compiling with CUDNN=1 doesn't allow object detection on pr
 ```
 cd computer-vision
 make
-wget https://pjreddie.com/media/files/yolov3.weights
+wget https://pjreddie.com/media/files/yolo.weights
 ```
 
 ## Running YOLO
